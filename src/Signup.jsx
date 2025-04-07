@@ -23,7 +23,7 @@ const Signup = () => {
     const googleSignUp = (e) => {
         e.preventDefault()
         googleAuthentication()
-        Navigate("/")
+        Navigate("/");
     }
 
     const signUp = (e) => {
