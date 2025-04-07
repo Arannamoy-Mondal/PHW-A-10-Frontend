@@ -6,16 +6,18 @@ import { Authcontext } from './Authprovider';
 
 const Login = () => {
   const emailRef = useRef();
-  const [show, setShow] = React.useState(false);
+  const [show, setShow] = React.useState(true);
   const [er, setEr] = React.useState(null);
   const [ok, setOk] = React.useState(null);
 
-  const {user,setUser, googleAuthentication } = useContext(Authcontext)
+  const { user, setUser, googleAuthentication, forgetPassword, login } = useContext(Authcontext)
 
-  const navigate=useNavigate()
+  const navigate = useNavigate()
 
   const loginGoogle = (e) => {
     e.preventDefault()
+    setOk(null)
+    setEr(null)
     googleAuthentication()
     navigate("/")
   }
@@ -23,6 +25,8 @@ const Login = () => {
 
   const showPass = (e) => {
     e.preventDefault()
+    setOk(null)
+    setEr(null)
     if (show) {
       setShow(false)
     }
@@ -31,14 +35,33 @@ const Login = () => {
 
   const signin = e => {
     e.preventDefault()
+    setOk(null)
+    setEr(null)
+    const email = e.target.email.value
+    const password = e.target.password.value
+    if (email && password) login(email, password).then(res => { setUser(res.user);navigate("/"); }).catch(err => setEr(err.message))
+    else setEr("Please enter email password properly.")
   }
 
   const forgetPass = e => {
     e.preventDefault()
+    setOk(null)
+    setEr(null)
+    const email = emailRef.current.value
+    if (email) {
+      forgetPassword(emailRef.current.value)
+      setOk("Check your inbox or spam")
+    }
+    else {
+      setEr("Please enter correct email address.")
+    }
+    console.log(emailRef.current.value);
   }
 
   return (
-    <div >
+    <div className='my-[15px]'>
+      <h1 className='text-center text-2xl lg:text-7xl font-bold'>Login</h1>
+      <hr className='border-[1px] border-solid my-[10px]' />
       <div className='flex flex-wrap justify-center btn btn-warning'><h1 className='text-center w-[100%] text-wrap lg:text-[1rem]'>Don't press Enter or Keyboard Keys for login. Use Login button. Just click "Login" by mouse or touchpad.</h1></div>
       <div className='flex flex-wrap justify-center mt-[25px]'>
         <form class="fieldset w-xs bg-base-200 border border-base-300 p-4 rounded-box" onSubmit={signin}>

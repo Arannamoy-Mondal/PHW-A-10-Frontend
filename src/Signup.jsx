@@ -6,7 +6,7 @@ import { FcGoogle } from 'react-icons/fc';
 
 const Signup = () => {
     const [show, setShow] = useState(true)
-    const { loading, user,setUser, googleAuthentication,createAccount } = useContext(Authcontext)
+    const { loading, user, setUser, googleAuthentication, createAccount } = useContext(Authcontext)
     const [ok, setOk] = useState(null)
     const [er, setEr] = useState(null)
 
@@ -14,6 +14,8 @@ const Signup = () => {
 
     const showPass = (e) => {
         e.preventDefault()
+        setOk(null)
+        setEr(null)
         if (show) {
             setShow(false)
         }
@@ -22,34 +24,38 @@ const Signup = () => {
 
     const googleSignUp = (e) => {
         e.preventDefault()
+        setOk(null)
+        setEr(null)
         googleAuthentication()
         Navigate("/")
     }
 
     const signUp = (e) => {
         e.preventDefault()
-        const email=e.target.email.value
-        const password=e.target.password.value
-        const cpassword=e.target.cpassword.value
-        const regex=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8}$/;
-        if(password===cpassword){
-            if(regex.test(password)){
-                createAccount(email,password).then(res=>{
+        setOk(null)
+        setEr(null)
+        const email = e.target.email.value
+        const password = e.target.password.value
+        const cpassword = e.target.cpassword.value
+        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8}$/;
+        if (password === cpassword) {
+            if (regex.test(password)) {
+                createAccount(email, password).then(res => {
                     setUser(res.user)
                     setOk("Account successfully created. now log in")
                     Navigate("/")
                 })
-                .catch(err=>setEr(err.message))
-                
+                    .catch(err => setEr(err.message))
+
             }
-            else{
+            else {
                 setEr("At least 1 lowercase letter,at least 1 uppercase letter,at least 1 digit (0-9),at least 1 special character (customize as needed) and exactly 8 characters long.")
             }
         }
-        else{
+        else {
             setEr("Password not match");
         }
-        console.log(email,password);
+        console.log(email, password);
     }
 
     if (loading) {
@@ -69,7 +75,9 @@ const Signup = () => {
     //     Navigate('/')
     // }
     return (
-        <div >
+        <div className='my-[15px] lg:my-[25px]'>
+            <h1 className='text-center text-2xl lg:text-7xl font-bold'>Signup</h1>
+            <hr className='border-[1px] border-solid my-[10px]'/>
             <div className='flex justify-center mt-[25px]'>
                 <form class="fieldset w-xs bg-base-200 border border-base-300 p-4 rounded-box" onSubmit={signUp}>
                     <label class="fieldset-label text-[1.25rem] text-black font-bold">Email</label>
@@ -79,10 +87,10 @@ const Signup = () => {
                     <input type={show ? "password" : "text"} class="input" placeholder="Password" name="password" required />
                     <label class="fieldset-label text-[1.25rem] text-black font-bold">Confirm Password</label>
                     <input type={show ? "password" : "text"} class="input" placeholder="Password" name="cpassword" required />
-                    <div className='flex items-center gap-[5px]' onClick={showPass}>
+                    <button className='btn flex items-center gap-[5px]' onClick={showPass}>
                         <FaEye ></FaEye>
-                        {show ? <h1>Show password</h1> : <h1>Hide password</h1>}
-                    </div>
+                        {show ? <button>Show password</button> : <button>Hide password</button>}
+                    </button>
                     {er && <h1 className='alert alert-error'>{er}</h1>}
                     {ok && <h1 className='alert alert-success'>{ok}</h1>}
                     <button class="btn btn-neutral mt-4" type='submit'>Signup</button>

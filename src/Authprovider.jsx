@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react';
 import auth from './firebase.config';
@@ -6,7 +6,7 @@ export const Authcontext = createContext()
 const Authprovider = ({ children }) => {
 
     const [user, setUser] = useState(null)
-    const [loading,setLoading]=useState(true)
+    const [loading, setLoading] = useState(true)
 
 
     useEffect(() => {
@@ -15,8 +15,9 @@ const Authprovider = ({ children }) => {
                 // User is signed in, see docs for a list of available properties
                 // https://firebase.google.com/docs/reference/js/auth.user
                 const uid = user.uid;
+                console.log(user, user.metadata.creationTime);
                 setUser(user)
-                
+
                 // ...
             } else {
                 setUser(null)
@@ -67,14 +68,33 @@ const Authprovider = ({ children }) => {
         setLoading(true)
         signOut(auth).then(() => {
             // setUser(null)
-            
+
             // Sign-out successful.
         }).catch((error) => {
             // An error happened.
         });
     }
 
-    const authInfo = { user, setUser, googleAuthentication, createAccount ,logOut,loading}
+
+    const forgetPassword = (email) => {
+        sendPasswordResetEmail(auth, email)
+            .then(() => {
+                // Password reset email sent!
+                // ..
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // ..
+            });
+    }
+
+
+    const login = (email,password) => {
+        return signInWithEmailAndPassword(auth, email, password)
+    }
+
+    const authInfo = { user, setUser, googleAuthentication, createAccount, logOut, loading, forgetPassword ,login}
     return (
         <Authcontext.Provider value={authInfo}>
             {children}
