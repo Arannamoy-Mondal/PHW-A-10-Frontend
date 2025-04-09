@@ -49,7 +49,20 @@ const Authprovider = ({ children }) => {
                 // The signed-in user info.
                 const user1 = result.user;
                 setUser(user1)
-                console.log(user);
+                const name = user1.displayName
+                const email = user1.email
+                const totalDonation = 0
+                const created_time = Date()
+                fetch("https://phw-a-10-backend.vercel.app/user/", {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    // body: JSON.stringify({})
+                    body: JSON.stringify({ name, email, totalDonation, created_time })
+                }).then(res => res.json()).then(res => console.log(res)).catch(err => console.log(err.message))
+                console.log(user.email, user.displayName);
+
                 // IdP data available using getAdditionalUserInfo(result)
                 // ...
             }).catch((error) => {
@@ -90,11 +103,11 @@ const Authprovider = ({ children }) => {
     }
 
 
-    const login = (email,password) => {
+    const login = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password)
     }
 
-    const authInfo = { user, setUser, googleAuthentication, createAccount, logOut, loading, forgetPassword ,login}
+    const authInfo = { user, setUser, googleAuthentication, createAccount, logOut, loading, forgetPassword, login }
     return (
         <Authcontext.Provider value={authInfo}>
             {children}

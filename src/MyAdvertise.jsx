@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { use, useContext, useEffect, useState } from 'react';
 import { Authcontext } from './Authprovider';
 import Campaign from './Campaign';
 import { NavLink } from 'react-router-dom';
@@ -10,12 +10,17 @@ const MyAdvertise = () => {
     useEffect(() => {
         fetch(`https://phw-a-10-backend.vercel.app/campaign/email/${user.email}`)
             .then(res => res.json()).then(res => setCampaigns(res)).catch(err => console.log(err.message))
+
+
     }, [])
 
-    const updateData=()=>{
+    const updateData = () => {
         fetch(`https://phw-a-10-backend.vercel.app/campaign/email/${user.email}`)
             .then(res => res.json()).then(res => setCampaigns(res)).catch(err => console.log(err.message))
+
     }
+
+    updateData()
     const deleteCampaign = (id) => {
         swal({
             title: "Are you sure?",
@@ -25,19 +30,19 @@ const MyAdvertise = () => {
         })
             .then(willDelete => {
                 if (willDelete) {
-                    fetch(`https://phw-a-10-backend.vercel.app/campaign/id/${id}`,{
-                        method:"DELETE"
+                    fetch(`https://phw-a-10-backend.vercel.app/campaign/id/${id}`, {
+                        method: "DELETE"
                     })
-                    .then(res=>res.json())
-                    .then(res=>{
-                        if(res.deletedCount>0){
-                            swal("Deleted!", "Your imaginary file has been deleted!", "success");
-                            updateData()
-                        }
-                    })
-                    .catch(err=>{
-                        swal("Faild!", "Please try later", "error");
-                    })
+                        .then(res => res.json())
+                        .then(res => {
+                            if (res.deletedCount > 0) {
+                                swal("Deleted!", "Your imaginary file has been deleted!", "success");
+                                updateData()
+                            }
+                        })
+                        .catch(err => {
+                            swal("Faild!", "Please try later", "error");
+                        })
                 }
             });
     }
@@ -66,7 +71,7 @@ const MyAdvertise = () => {
                             </div>
                             <div className='lg:w-[20%] flex justify-center gap-[10px]'>
                                 <NavLink className={"btn btn-warning text-white font-bold"}>Edit</NavLink>
-                                <NavLink className={"btn btn-error text-white font-bold"} onClick={()=>deleteCampaign(campaign._id)}>Delete</NavLink>
+                                <NavLink className={"btn btn-error text-white font-bold"} onClick={() => deleteCampaign(campaign._id)}>Delete</NavLink>
                             </div>
                         </div>
                 )
