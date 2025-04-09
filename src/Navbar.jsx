@@ -20,7 +20,8 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <NavLink to="/" className={"btn btn-primary btn-outline m-[5px]"}>Home</NavLink>
-            <NavLink  className={"btn btn-primary btn-outline m-[5px]"}>All Campaign</NavLink>
+            <NavLink to="/all-campaign" className={"btn btn-primary btn-outline m-[5px]"}>All Campaign</NavLink>
+            <li><NavLink to="/create-campaign" className={"btn btn-primary btn-outline m-[5px]"}>Create Campaign</NavLink></li>
             <NavLink  className={"btn btn-primary btn-outline m-[5px]"}>How to help us?</NavLink>
           </ul>
         </div>
@@ -42,8 +43,9 @@ const Navbar = () => {
                 <summary className={"btn btn-error btn-outline m-[5px]"}>Menu</summary>
                 <ul className="bg-base-100 rounded-t-none p-2">
                   <li><NavLink  className={"btn btn-primary btn-outline m-[5px]"}>Home</NavLink></li>
-                  <li><NavLink  className={"btn btn-primary btn-outline m-[5px]"}>All Campaign</NavLink></li>
+                  <li><NavLink to="/all-campaign" className={"btn btn-primary btn-outline m-[5px]"}>All Campaign</NavLink></li>
                   <li><NavLink  className={"btn btn-primary btn-outline m-[5px]"}>Dashboard</NavLink></li>
+                  <li><NavLink to="/create-campaign"  className={"btn btn-primary btn-outline m-[5px]"}>Create Campaign</NavLink></li>
                   <li> <NavLink  className={"btn btn-primary btn-outline m-[5px]"}>How to help us?</NavLink></li>
                   <li><button onClick={signOut} className={"btn btn-primary btn-outline m-[5px]"} >Logout</button></li>
                 </ul>
@@ -52,7 +54,8 @@ const Navbar = () => {
                   <summary className={"btn btn-error btn-outline m-[5px]"}>Menu</summary>
                   <ul className="bg-base-100 rounded-t-none p-2">
                     <li><NavLink  className={"btn btn-primary btn-outline m-[5px]"}>Home</NavLink></li>
-                    <li><NavLink  className={"btn btn-primary btn-outline m-[5px]"}>All Campaign</NavLink></li>
+                    <li><NavLink to="/all-campaign" className={"btn btn-primary btn-outline m-[5px]"}>All Campaign</NavLink></li>
+                    <li><NavLink to="/create-campaign"  className={"btn btn-primary btn-outline m-[5px]"}>Create Campaign</NavLink></li>
                     <li><NavLink to="/signup"  className={"btn btn-primary btn-outline m-[5px]"}>Signup</NavLink></li>
                     <li><NavLink to="/login"  className={"btn btn-primary btn-outline m-[5px]"}>Login</NavLink></li>
                     <li> <NavLink  className={"btn btn-primary btn-outline m-[5px]"}>How to help us?</NavLink></li>

@@ -9,6 +9,9 @@ import Error from './Error.jsx'
 import Home from './Home.jsx'
 import Login from './Login.jsx'
 import Signup from './Signup.jsx'
+import AllCampaign from './AllCampaign.jsx'
+import PrivateRoute from './PrivateRoute.jsx'
+import CreateCampaign from './CreateCampaign.jsx'
 const router=createBrowserRouter(
   [
     {
@@ -28,6 +31,16 @@ const router=createBrowserRouter(
           {
             path:"/signup",
             element: <Signup></Signup>
+          },
+          {
+            path:"/all-campaign"
+            ,element: <AllCampaign></AllCampaign>
+          },
+          {
+            path:"/create-campaign",
+            element: <PrivateRoute>
+              <CreateCampaign></CreateCampaign>
+            </PrivateRoute>
           }
         ]
     }
