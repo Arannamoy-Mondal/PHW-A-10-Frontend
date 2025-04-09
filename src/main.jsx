@@ -12,6 +12,7 @@ import Signup from './Signup.jsx'
 import AllCampaign from './AllCampaign.jsx'
 import PrivateRoute from './PrivateRoute.jsx'
 import CreateCampaign from './CreateCampaign.jsx'
+import MyAdvertise from './MyAdvertise.jsx'
 const router=createBrowserRouter(
   [
     {
@@ -40,6 +41,12 @@ const router=createBrowserRouter(
             path:"/create-campaign",
             element: <PrivateRoute>
               <CreateCampaign></CreateCampaign>
+            </PrivateRoute>
+          },
+          {
+            path:"/my-advertise",
+            element: <PrivateRoute>
+              <MyAdvertise></MyAdvertise>
             </PrivateRoute>
           }
         ]

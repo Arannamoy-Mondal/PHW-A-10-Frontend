@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Campaign from './Campaign';
 import swal from 'sweetalert';
+import { Authcontext } from './Authprovider';
 
 const AllCampaign = () => {
     const [campaigns,setCampaigns] = useState([])
@@ -13,10 +14,10 @@ const AllCampaign = () => {
             swal("Oops!", "Something went wrong!", "error");
         })
     },[])
-    console.log(campaigns);
+
     return (
         <div className='flex justify-center  gap-[10px]'>
-            <div className='flex flex-wrap justify-evenly'>
+            <div className='flex flex-wrap justify-evenly gap-[10px]'>
                 {
                     campaigns.map(campaign =>
                         <Campaign key={campaign._id} campaign={campaign}></Campaign>
