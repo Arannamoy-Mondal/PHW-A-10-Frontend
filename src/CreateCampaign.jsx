@@ -6,18 +6,19 @@ const CreateCampaign = () => {
     const { user } = useContext(Authcontext)
     const createCampaign = (e) => {
         e.preventDefault()
-        const form=e.target
-        const title=form.title.value
-        const type=form.type.value
-        const description=form.description.value
-        const amount=form.amount.value
-        const deadline=form.deadline.value
-        const organizerName=form.organizerName.value
-        const organizerEmail=form.organizerEmail.value
-        const created_time=Date()
+        const form = e.target
+        const title = form.title.value
+        const type = form.type.value
+        const description = form.description.value
+        const amount = form.amount.value
+        const deadline = form.deadline.value
+        const organizerName = form.organizerName.value
+        const organizerEmail = form.organizerEmail.value
+        const created_time = Date()
+        const url=form.url.value
 
-        console.log(title,type,description,amount,deadline,organizerName,organizerEmail,created_time);
-        
+        console.log(title, type, description, amount, deadline, organizerName, organizerEmail, created_time);
+
         swal({
             title: "Are you sure?",
             text: "Are you sure that you want to create this campaign?",
@@ -26,15 +27,15 @@ const CreateCampaign = () => {
         })
             .then(willDelete => {
                 if (willDelete) {
-                    fetch("https://phw-a-10-backend.vercel.app/campaign",{
-                        method:"POST",
-                        headers:{
-                            "content-type":"application/json"
+                    fetch("https://phw-a-10-backend.vercel.app/campaign", {
+                        method: "POST",
+                        headers: {
+                            "content-type": "application/json"
                         },
-                        body:JSON.stringify({title,type,description,amount,deadline,organizerName,organizerEmail,created_time})
-                    }).then(res=>res.json()).then(res=>{
+                        body: JSON.stringify({ title, type,url, description, amount, deadline, organizerName, organizerEmail, created_time })
+                    }).then(res => res.json()).then(res => {
                         console.log(res);
-                        if(res.acknowledged){
+                        if (res.acknowledged) {
                             swal("Congratulations !", "Campaign create successfully.", "success");
                         }
                     })
@@ -65,10 +66,12 @@ const CreateCampaign = () => {
                     <input required name="amount" type="number" className="input" placeholder="Minimum donation amount" />
                     <label className="fieldset-label">Deadline (Date)</label>
                     <input required name="deadline" type="datetime-local" className="datetime-local text-xl border-[1px] border-solid border-black p-[5px]" placeholder="Campaign Description" />
+                    <label className="fieldset-label">Image URL</label>
+                    <input required name="url" type="url" className="input" placeholder="Image URL" value="https://i.ibb.co.com/JFQ2yCqj/download.jpg"/>
                     <label className="fieldset-label">Campaign organised By</label>
                     <input type="text" name='organizerName' className="input" placeholder={user.displayName} value={user.displayName} />
                     <label className="fieldset-label">Campaign organizer Email</label>
-                    <input type="text"  name="organizerEmail" className="input" placeholder={user.email} value={user.email} />
+                    <input type="text" name="organizerEmail" className="input" placeholder={user.email} value={user.email} />
                     <button className="btn btn-neutral mt-4">Create Campaign</button>
                 </form>
             </div>
