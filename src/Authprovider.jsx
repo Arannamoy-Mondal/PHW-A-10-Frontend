@@ -53,15 +53,29 @@ const Authprovider = ({ children }) => {
                 const email = user1.email
                 const totalDonation = 0
                 const created_time = Date()
-                fetch("https://phw-a-10-backend.vercel.app/user/", {
-                    method: "POST",
-                    headers: {
-                        "content-type": "application/json"
-                    },
-                    // body: JSON.stringify({})
-                    body: JSON.stringify({ name, email, totalDonation, created_time })
-                }).then(res => res.json()).then(res => console.log(res)).catch(err => console.log(err.message))
+
+                fetch(`https://phw-a-10-backend.vercel.app/user/email/${email}`)
+                    .then(res => res.json())
+                    .then(res => {
+                        if (res.isExist == false) {
+                            fetch("https://phw-a-10-backend.vercel.app/user/", {
+                                method: "POST",
+                                headers: {
+                                    "content-type": "application/json"
+                                },
+                                // body: JSON.stringify({})
+                                body: JSON.stringify({ name, email, totalDonation, created_time })
+                            }).then(res => res.json()).then(res => console.log(res)).catch(err => console.log(err.message))
+                        }
+                    })
+                    .catch(er => console.log(er))
+
+
+
+
+
                 console.log(user.email, user.displayName);
+
 
                 // IdP data available using getAdditionalUserInfo(result)
                 // ...
@@ -70,7 +84,7 @@ const Authprovider = ({ children }) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 // The email of the user's account used.
-                const email = error.customData.email;
+                // const email = error.customData.email;
                 // The AuthCredential type that was used.
                 const credential = GoogleAuthProvider.credentialFromError(error);
                 // ...
