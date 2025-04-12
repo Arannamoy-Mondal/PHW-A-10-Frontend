@@ -24,16 +24,21 @@ const Navbar = () => {
           <li><NavLink to="/create-campaign" className={"btn btn-primary btn-outline m-[5px]"}>Create Campaign</NavLink></li>
           {user && <li>
             <NavLink to="/my-advertise" className={"btn btn-primary btn-outline m-[5px]"}>
-              My Advertise
+              My Campaign
             </NavLink>
           </li>}
-          <NavLink className={"btn btn-primary btn-outline m-[5px]"}>How to help us?</NavLink>
+          <li>
+                  <NavLink to="/my-advertise" className={"btn btn-primary btn-outline m-[5px]"}>
+                    My Donation
+                  </NavLink>
+                </li>
+          <NavLink to="/howToHelpUs" className={"btn btn-primary btn-outline m-[5px]"}>How to help us?</NavLink>
         </ul>
       </div>
       <div className="navbar-end gap-[15px]">
         {
           user ? <>
-            <NavLink className={"btn btn-primary hidden lg:flex"}>Dashboard</NavLink>
+            <NavLink to="/dashboard" className={"btn btn-primary hidden lg:flex"}>Dashboard</NavLink>
             <button className={"btn btn-primary hidden lg:flex"} onClick={signOut}>Logout</button>
           </> :
             <>
@@ -49,14 +54,19 @@ const Navbar = () => {
               <ul className="bg-base-100 rounded-t-none p-2">
                 <li><NavLink className={"btn btn-primary btn-outline m-[5px]"}>Home</NavLink></li>
                 <li><NavLink to="/all-campaign" className={"btn btn-primary btn-outline m-[5px]"}>All Campaign</NavLink></li>
-                <li><NavLink className={"btn btn-primary btn-outline m-[5px]"}>Dashboard</NavLink></li>
+                <li><NavLink to="/dashboard" className={"btn btn-primary btn-outline m-[5px]"}>Dashboard</NavLink></li>
                 <li><NavLink to="/create-campaign" className={"btn btn-primary btn-outline m-[5px]"}>Create Campaign</NavLink></li>
                 <li>
                   <NavLink to="/my-advertise" className={"btn btn-primary btn-outline m-[5px]"}>
-                    My Advertise
+                    My Campaign
                   </NavLink>
                 </li>
-                <li> <NavLink className={"btn btn-primary btn-outline m-[5px]"}>How to help us?</NavLink></li>
+                <li>
+                  <NavLink to="/my-advertise" className={"btn btn-primary btn-outline m-[5px]"}>
+                    My Donation
+                  </NavLink>
+                </li>
+                <li> <NavLink to="/howToHelpUs" className={"btn btn-primary btn-outline m-[5px]"}>How to help us?</NavLink></li>
                 <li><button onClick={signOut} className={"btn btn-primary btn-outline m-[5px]"} >Logout</button></li>
               </ul>
             </details> :
@@ -68,7 +78,7 @@ const Navbar = () => {
                   <li><NavLink to="/create-campaign" className={"btn btn-primary btn-outline m-[5px]"}>Create Campaign</NavLink></li>
                   <li><NavLink to="/signup" className={"btn btn-primary btn-outline m-[5px]"}>Signup</NavLink></li>
                   <li><NavLink to="/login" className={"btn btn-primary btn-outline m-[5px]"}>Login</NavLink></li>
-                  <li> <NavLink className={"btn btn-primary btn-outline m-[5px]"}>How to help us?</NavLink></li>
+                  <li> <NavLink to="/howToHelpUs" className={"btn btn-primary btn-outline m-[5px]"}>How to help us?</NavLink></li>
                 </ul>
               </details>
           }

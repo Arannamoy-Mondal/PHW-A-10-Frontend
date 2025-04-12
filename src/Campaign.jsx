@@ -7,7 +7,7 @@ const Campaign = ({ campaign}) => {
         title,
         type, description,
         amount, deadline, organizerName, organizerEmail,
-        created_time,url
+        created_time,url,totalDonatedAmount
     } = campaign
     
     return (
@@ -20,11 +20,13 @@ const Campaign = ({ campaign}) => {
             <h1 className='text-center text-wrap'>{title}</h1>
             <h1 className='text-center text-wrap'>{type}</h1>
             <h1 className='text-center text-wrap'>{description}</h1>
-            <h1 className='text-center text-wrap'>${amount}</h1>
+            <h1 className='text-center text-wrap'>{amount} BDT</h1>
             <h1 className='text-center text-wrap'>{deadline}</h1>
             <h1 className='text-center text-wrap'>{organizerName}</h1>
             <h1 className='text-center text-wrap'>{organizerEmail}</h1>
             <h1 className='text-center text-wrap'>{created_time}</h1>
+            <h1 className='text-center text-wrap'>Total donated amount: {totalDonatedAmount} BDT</h1>
+            <NavLink to={"/donate/" + _id} className={'btn btn-primary'}>Donate Now</NavLink>
         </div>
     );
 };

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import swal from 'sweetalert';
 import { Authcontext } from './Authprovider';
+import Loading from './Loading';
 const CreateCampaign = () => {
 
     const { user } = useContext(Authcontext)
@@ -32,7 +33,7 @@ const CreateCampaign = () => {
                         headers: {
                             "content-type": "application/json"
                         },
-                        body: JSON.stringify({ title, type,url, description, amount, deadline, organizerName, organizerEmail, created_time })
+                        body: JSON.stringify({ title, type,url, description, amount, deadline, organizerName, organizerEmail, created_time,"totalDonatedAmount":0 })
                     }).then(res => res.json()).then(res => {
                         console.log(res);
                         if (res.acknowledged) {
@@ -75,6 +76,7 @@ const CreateCampaign = () => {
                     <button className="btn btn-neutral mt-4">Create Campaign</button>
                 </form>
             </div>
+            
         </div>
     );
 };

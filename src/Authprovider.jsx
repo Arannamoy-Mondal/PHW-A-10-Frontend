@@ -17,7 +17,7 @@ const Authprovider = ({ children }) => {
                 const uid = user.uid;
                 console.log(user, user.metadata.creationTime);
                 setUser(user)
-
+                setLoading(false)
                 // ...
             } else {
                 setUser(null)
@@ -31,7 +31,7 @@ const Authprovider = ({ children }) => {
     }, [])
 
     const createAccount = (email, password) => {
-        // setLoading(true)
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
 
     }
@@ -63,7 +63,6 @@ const Authprovider = ({ children }) => {
                                 headers: {
                                     "content-type": "application/json"
                                 },
-                                // body: JSON.stringify({})
                                 body: JSON.stringify({ name, email, totalDonation, created_time })
                             }).then(res => res.json()).then(res => console.log(res)).catch(err => console.log(err.message))
                         }
@@ -104,6 +103,7 @@ const Authprovider = ({ children }) => {
 
 
     const forgetPassword = (email) => {
+        setLoading(true)
         sendPasswordResetEmail(auth, email)
             .then(() => {
                 // Password reset email sent!
@@ -118,6 +118,7 @@ const Authprovider = ({ children }) => {
 
 
     const login = (email, password) => {
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 

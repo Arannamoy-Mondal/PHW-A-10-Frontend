@@ -13,6 +13,10 @@ import AllCampaign from './AllCampaign.jsx'
 import PrivateRoute from './PrivateRoute.jsx'
 import CreateCampaign from './CreateCampaign.jsx'
 import MyAdvertise from './MyAdvertise.jsx'
+import Viewmore from './Viewmore.jsx'
+import HowToHelpUs from './HowToHelpUs.jsx'
+import Dashboard from './Dashboard.jsx'
+import DonateNow from './DonateNow.jsx'
 const router=createBrowserRouter(
   [
     {
@@ -47,6 +51,32 @@ const router=createBrowserRouter(
             path:"/my-advertise",
             element: <PrivateRoute>
               <MyAdvertise></MyAdvertise>
+            </PrivateRoute>
+          },
+          {
+            path:"/viewmore/:_id",
+            loader: ({params})=>fetch(`https://phw-a-10-backend.vercel.app/campaign/id/${params._id}`),
+            element: <PrivateRoute>
+              <Viewmore></Viewmore>
+            </PrivateRoute>
+          },
+          {
+            path:"/howToHelpUs",
+            element: <HowToHelpUs></HowToHelpUs>
+          },
+          {
+            path:"/dashboard",
+            element: 
+            <PrivateRoute>
+              <Dashboard></Dashboard>
+            </PrivateRoute>
+          },
+          {
+            path:"/donate/:id",
+            loader: ({params})=>fetch(`https://phw-a-10-backend.vercel.app/campaign/id/${params.id}`),
+            element:
+            <PrivateRoute>
+              <DonateNow></DonateNow>
             </PrivateRoute>
           }
         ]
