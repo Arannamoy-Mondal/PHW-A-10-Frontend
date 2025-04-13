@@ -70,7 +70,7 @@ const MyAdvertise = () => {
                                 <h1 className='text-center text-wrap'>Created time: {campaign.created_time}</h1>
                             </div>
                             <div className='lg:w-[20%] flex justify-center gap-[10px]'>
-                                <NavLink className={"btn btn-warning text-white font-bold"}>Edit</NavLink>
+                                <NavLink to={`/editCampaign/${campaign._id}`} className={"btn btn-warning text-white font-bold"}>Edit</NavLink>
                                 <NavLink className={"btn btn-error text-white font-bold"} onClick={() => deleteCampaign(campaign._id)}>Delete</NavLink>
                             </div>
                         </div>

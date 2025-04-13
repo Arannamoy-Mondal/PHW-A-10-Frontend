@@ -20,7 +20,6 @@ const DonateNow = () => {
             swal('Sorry!',`Minimum amount is ${campaign.amount}`,'error')
             return;
         }
-        console.log(campaign.totalDonatedAmount,"DAmount: ",dAmount,parseInt(campaign.totalDonatedAmount)+parseInt(dAmount));
         
         fetch("https://phw-a-10-backend.vercel.app/donation",{
             method:"POST",
@@ -31,7 +30,6 @@ const DonateNow = () => {
         }).then(res=>res.json()).then(res=>
         {
             
-            console.log(total);
             swal("Successful","","success")
             
             fetch(`https://phw-a-10-backend.vercel.app/campaign/id/${cId}`,{

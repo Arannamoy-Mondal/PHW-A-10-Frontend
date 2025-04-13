@@ -11,7 +11,6 @@ const Dashboard = () => {
         .then(res=>setUserDb(res))
     },[])
 
-    console.log(userDb);
     return (
         <div className='w-[70%] mx-auto'>
             <div className=' w-[100%]'>

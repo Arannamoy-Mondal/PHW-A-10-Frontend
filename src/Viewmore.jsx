@@ -3,7 +3,6 @@ import { NavLink, useLoaderData } from 'react-router-dom';
 
 const Viewmore = () => {
     const campaign = useLoaderData()
-    console.log(campaign);
     return (
         <div className='my-[50px]'>
             <div className='flex justify-center'>

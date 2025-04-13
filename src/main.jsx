@@ -17,6 +17,7 @@ import Viewmore from './Viewmore.jsx'
 import HowToHelpUs from './HowToHelpUs.jsx'
 import Dashboard from './Dashboard.jsx'
 import DonateNow from './DonateNow.jsx'
+import EditCampaign from './EditCampaign.jsx'
 const router=createBrowserRouter(
   [
     {
@@ -77,6 +78,12 @@ const router=createBrowserRouter(
             element:
             <PrivateRoute>
               <DonateNow></DonateNow>
+            </PrivateRoute>
+          },
+          {
+            path:"/editCampaign/:id",
+            element: <PrivateRoute>
+              <EditCampaign></EditCampaign>
             </PrivateRoute>
           }
         ]
