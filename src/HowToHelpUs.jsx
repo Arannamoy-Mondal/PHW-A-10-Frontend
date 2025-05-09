@@ -16,7 +16,7 @@ const HowToHelpUs = () => {
                         <div className="card-actions justify-end">
 
 
-                            <button className="btn">Donate</button>
+                            <NavLink to="/all-campaign" className="btn">Donate</NavLink>
 
                         </div>
                     </div>
@@ -28,7 +28,7 @@ const HowToHelpUs = () => {
                         <p> Contribute funds to help with logistics, storage, and distribution of donations.</p>
                         <div className="card-actions justify-end">
 
-                            <button className="btn">Donate</button>
+                            <NavLink to="/all-campaign" className="btn">Donate</NavLink>
                         </div>
                     </div>
                 </div>

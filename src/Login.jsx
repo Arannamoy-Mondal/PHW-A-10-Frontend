@@ -3,6 +3,8 @@ import { FcGoogle } from "react-icons/fc";
 import { FaEye } from 'react-icons/fa';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Authcontext } from './Authprovider';
+import AllCampaign from './AllCampaign';
+import Loading from './Loading';
 
 const Login = () => {
   const emailRef = useRef();
@@ -10,7 +12,7 @@ const Login = () => {
   const [er, setEr] = React.useState(null);
   const [ok, setOk] = React.useState(null);
 
-  const { user, setUser, googleAuthentication, forgetPassword, login } = useContext(Authcontext)
+  const { user, setUser, googleAuthentication, forgetPassword, login, loading } = useContext(Authcontext)
 
   const navigate = useNavigate()
 
@@ -50,14 +52,22 @@ const Login = () => {
     const email = emailRef.current.value
     if (email) {
       forgetPassword(emailRef.current.value)
-      navigate("/")
+      .then(res => {})
+      .catch(er => {})
+      setOk("Check your inbox or spam mail box.")
+      // navigate("/")
     }
     else {
       setEr("Please enter correct email address.")
     }
 
   }
-
+  if (loading) {
+    return <Loading></Loading>
+  }
+  if (user) {
+    return <Home></Home>
+  }
   return (
     <div className='my-[15px]'>
       <h1 className='text-center text-2xl lg:text-7xl font-bold'>Login</h1>

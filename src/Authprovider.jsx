@@ -15,9 +15,9 @@ const Authprovider = ({ children }) => {
                 // User is signed in, see docs for a list of available properties
                 // https://firebase.google.com/docs/reference/js/auth.user
                 const uid = user.uid;
-                console.log(user, user.metadata.creationTime);
+                // console.log(user, user.metadata.creationTime);
                 setUser(user)
-                setLoading(false)
+                // setLoading(false)
                 // ...
             } else {
                 setUser(null)
@@ -40,7 +40,7 @@ const Authprovider = ({ children }) => {
     const googleProvider = new GoogleAuthProvider();
 
     const googleAuthentication = () => {
-        setLoading(true)
+        // setLoading(true)
         signInWithPopup(auth, googleProvider)
             .then((result) => {
                 // This gives you a Google Access Token. You can use it to access the Google API.
@@ -64,16 +64,17 @@ const Authprovider = ({ children }) => {
                                     "content-type": "application/json"
                                 },
                                 body: JSON.stringify({ name, email, totalDonation, created_time })
-                            }).then(res => res.json()).then(res => console.log(res)).catch(err => console.log(err.message))
+                            })
+                            .then(res => res.json())
                         }
                     })
-                    .catch(er => console.log(er))
+                    
 
 
 
 
 
-                console.log(user.email, user.displayName);
+                // console.log(user.email, user.displayName);
 
 
                 // IdP data available using getAdditionalUserInfo(result)
@@ -91,7 +92,7 @@ const Authprovider = ({ children }) => {
     }
 
     const logOut = () => {
-        // setLoading(true)
+        setLoading(true)
         signOut(auth).then(() => {
             // setUser(null)
 
@@ -104,21 +105,12 @@ const Authprovider = ({ children }) => {
 
     const forgetPassword = (email) => {
         // setLoading(true)
-        sendPasswordResetEmail(auth, email)
-            .then(() => {
-                // Password reset email sent!
-                // ..
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                // ..
-            });
+        return sendPasswordResetEmail(auth, email);
     }
 
 
     const login = (email, password) => {
-        // setLoading(true)
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 

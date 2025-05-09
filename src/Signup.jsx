@@ -3,6 +3,10 @@ import { Authcontext } from './Authprovider';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { FaEye } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
+import Banner from './Banner';
+import AllCampaign from './AllCampaign';
+import Loading from './Loading';
+import Home from './Home';
 
 const Signup = () => {
     const [show, setShow] = useState(true)
@@ -55,25 +59,17 @@ const Signup = () => {
         else {
             setEr("Password not match");
         }
-        console.log(email, password);
+       
     }
-
+    
     if (loading) {
         return (
-            <div className='flex justify-center'>
-                <div>
-                    <span class="loading loading-bars loading-xs"></span>
-                    <span class="loading loading-bars loading-sm"></span>
-                    <span class="loading loading-bars loading-md"></span>
-                    <span class="loading loading-bars loading-lg"></span>
-                    <span class="loading loading-bars loading-xl"></span>
-                </div>
-            </div>
+            <Loading></Loading>
         )
     }
-    // if (user) {
-    //     Navigate('/')
-    // }
+    if(user){
+        return <Home></Home>
+    }
     return (
         <div className='my-[15px] lg:my-[25px]'>
             <h1 className='text-center text-2xl lg:text-7xl font-bold'>Signup</h1>
