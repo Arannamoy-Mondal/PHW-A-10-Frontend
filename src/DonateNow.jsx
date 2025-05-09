@@ -20,13 +20,14 @@ const DonateNow = () => {
             swal('Sorry!',`Minimum amount is ${campaign.amount}`,'error')
             return;
         }
-        
+        const dateTime=Date()
+
         fetch("https://phw-a-10-backend.vercel.app/donation",{
             method:"POST",
             headers:{
                 "content-type":"application/json"
             },
-            body:JSON.stringify({"cId":cId,"cTitle":cTitle,"dName":dName,"dEmail":dEmail,"dAmount":dAmount})
+            body:JSON.stringify({"cId":cId,"cTitle":cTitle,"dName":dName,"dEmail":dEmail,"dAmount":dAmount,"dTime":dateTime})
         }).then(res=>res.json()).then(res=>
         {
             
@@ -39,11 +40,12 @@ const DonateNow = () => {
                 },
                 body:JSON.stringify({"totalDonatedAmount":total+parseInt(dAmount)})
             }).then(res=>res.json()).then(res=>{
-                navigate(`/donate/${campaign._id}`);
+                navigate(`/viewmore/${campaign._id}`);
             })
         }
         ).catch(er=>swal("Failed",{er},"error"))
     }
+
     return (
         <div className='flex justify-center'>
 
@@ -57,7 +59,7 @@ const DonateNow = () => {
                 <input type="email" className="input" placeholder="Email" name="email" value={user.email}/>
                 <label className="fieldset-label">Donation Amount:</label>
                 <input type="number" name="amount" required id="" className='input' placeholder={`Minimum ${campaign.amount} BDT`}/>
-                <input type="number" id="" className='input' placeholder={`Minimum ${campaign.totalDonatedAmount} BDT`}/>
+                {/* <input type="number" id="" className='input' placeholder={`Minimum ${campaign.totalDonatedAmount} BDT`}/> */}
                 <button className="btn btn-neutral mt-4">Donate</button>
             </form>
         </div>

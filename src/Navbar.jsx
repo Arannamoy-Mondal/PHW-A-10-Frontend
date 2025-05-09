@@ -28,7 +28,7 @@ const Navbar = () => {
             </NavLink>
           </li>}
           <li>
-                  <NavLink to="/my-advertise" className={"btn btn-primary btn-outline m-[5px]"}>
+                  <NavLink to="/my-donation" className={"btn btn-primary btn-outline m-[5px]"}>
                     My Donation
                   </NavLink>
                 </li>
@@ -62,7 +62,7 @@ const Navbar = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/my-advertise" className={"btn btn-primary btn-outline m-[5px]"}>
+                  <NavLink to="/my-donation" className={"btn btn-primary btn-outline m-[5px]"}>
                     My Donation
                   </NavLink>
                 </li>

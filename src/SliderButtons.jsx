@@ -13,7 +13,7 @@ const SliderButtons = () => {
             <div className='flex gap-[5px] flex-wrap justify-center'>
                 {
                     campaigns.map(el =>
-                        <a href={`#item` + el._id} className='btn btn-outline'>{el.title}</a>
+                        <a href={`#item` + el._id} className='btn btn-primary btn-outline btn-soft'>{el.title}</a>
                     )
                 }
             </div>

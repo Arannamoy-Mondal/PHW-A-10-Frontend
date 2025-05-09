@@ -14,7 +14,7 @@ const Viewmore = () => {
             <h1 className='text-center text-[1.25rem] font-bold' >Organizer name: {campaign.organizerName}</h1>
             <h1 className='text-center text-[1.25rem] font-bold' >Organizer Email: {campaign.organizerEmail}</h1>
             <h1 className='text-center text-wrap text-[1.25rem] font-bold'>Total donated amount: {campaign.totalDonatedAmount}</h1>
-            <div className='flex justify-center'><NavLink to={"/donate/" + campaign.id} className={"btn btn-primary"}>Donate</NavLink></div>
+            <div className='flex justify-center'><NavLink to={"/donate/" + campaign._id} className={"btn btn-primary"}>Donate Now</NavLink></div>
         </div>
     );
 };

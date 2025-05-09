@@ -2,9 +2,11 @@ import React, { useContext } from 'react';
 import swal from 'sweetalert';
 import { Authcontext } from './Authprovider';
 import Loading from './Loading';
+import { useNavigate } from 'react-router-dom';
 const CreateCampaign = () => {
 
     const { user } = useContext(Authcontext)
+    const navigate=useNavigate();
     const createCampaign = (e) => {
         e.preventDefault()
         const form = e.target
@@ -17,7 +19,7 @@ const CreateCampaign = () => {
         const organizerEmail = form.organizerEmail.value
         const created_time = Date()
         const url=form.url.value
-
+        
         console.log(title, type, description, amount, deadline, organizerName, organizerEmail, created_time);
 
         swal({
@@ -35,9 +37,11 @@ const CreateCampaign = () => {
                         },
                         body: JSON.stringify({ title, type,url, description, amount, deadline, organizerName, organizerEmail, created_time,"totalDonatedAmount":0 })
                     }).then(res => res.json()).then(res => {
-                        console.log(res);
                         if (res.acknowledged) {
-                            swal("Congratulations !", "Campaign create successfully.", "success");
+                            swal("Congratulations !", "Campaign create successfully.", "success")
+                            .then(()=>{
+                               navigate("/all-campaign")
+                            })
                         }
                     })
                 }
@@ -58,6 +62,8 @@ const CreateCampaign = () => {
                             <option value="Startup">Startup</option>
                             <option value="Business">Business</option>
                             <option value="Creative ideas">Creative ideas</option>
+                            <option value="Non Profit">Non Profit</option>
+                            <option value="Save Humanity">Save Humanity</option>
                         </select>
                     </div>
 
