@@ -40,7 +40,7 @@ const Banner = () => {
                                     <h1 className="w-[90%] text-wrap font-bold text-center">{campaign.description}</h1>
                                 </div>
                                 <h1 className="flex justify-center font-bold">{ }</h1>
-                                <h1 className="text-center font-bold">Minimum donation amount: {campaign.amount}</h1>
+                                <h1 className="text-center font-bold">Minimum donation amount: ${campaign.amount}</h1>
                                 <h1 className="text-center font-bold">Division: {campaign.organizerName}</h1>
                                 <h1 className="text-center font-bold">{campaign.deadline}</h1>
                                 <div className="flex flex-wrap justify-center gap-[10px]">
