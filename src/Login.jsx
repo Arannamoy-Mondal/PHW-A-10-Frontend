@@ -39,7 +39,7 @@ const Login = () => {
     setEr(null)
     const email = e.target.email.value
     const password = e.target.password.value
-    if (email && password) login(email, password).then(res => { setUser(res.user);navigate("/"); }).catch(err => setEr(err.message))
+    if (email && password) login(email, password).then(res => { setUser(res.user); navigate("/"); }).catch(err => setEr(err.message))
     else setEr("Please enter email password properly.")
   }
 
@@ -50,12 +50,12 @@ const Login = () => {
     const email = emailRef.current.value
     if (email) {
       forgetPassword(emailRef.current.value)
-      setOk("Check your inbox or spam")
+      navigate("/")
     }
     else {
       setEr("Please enter correct email address.")
     }
-    console.log(emailRef.current.value);
+
   }
 
   return (

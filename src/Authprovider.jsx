@@ -31,7 +31,7 @@ const Authprovider = ({ children }) => {
     }, [])
 
     const createAccount = (email, password) => {
-        setLoading(true)
+        // setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
 
     }
@@ -91,7 +91,7 @@ const Authprovider = ({ children }) => {
     }
 
     const logOut = () => {
-        setLoading(true)
+        // setLoading(true)
         signOut(auth).then(() => {
             // setUser(null)
 
@@ -103,7 +103,7 @@ const Authprovider = ({ children }) => {
 
 
     const forgetPassword = (email) => {
-        setLoading(true)
+        // setLoading(true)
         sendPasswordResetEmail(auth, email)
             .then(() => {
                 // Password reset email sent!
@@ -118,7 +118,7 @@ const Authprovider = ({ children }) => {
 
 
     const login = (email, password) => {
-        setLoading(true)
+        // setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 
