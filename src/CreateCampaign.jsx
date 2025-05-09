@@ -4,7 +4,7 @@ import { Authcontext } from './Authprovider';
 import Loading from './Loading';
 import { useNavigate } from 'react-router-dom';
 const CreateCampaign = () => {
-
+    
     const { user } = useContext(Authcontext)
     const navigate=useNavigate();
     const createCampaign = (e) => {
@@ -20,7 +20,7 @@ const CreateCampaign = () => {
         const created_time = Date()
         const url=form.url.value
         
-        console.log(title, type, description, amount, deadline, organizerName, organizerEmail, created_time);
+        // console.log(title, type, description, amount, deadline, organizerName, organizerEmail, created_time);
 
         swal({
             title: "Are you sure?",
@@ -47,6 +47,7 @@ const CreateCampaign = () => {
                 }
             });
     }
+    // console.log(user);
     return (
         <div>
             <h1 className='text-center lg:text-[2rem] font-bold'>Create Campaign</h1>
@@ -76,10 +77,10 @@ const CreateCampaign = () => {
                     <label className="fieldset-label">Image URL</label>
                     <input required name="url" type="url" className="input" placeholder="Image URL" value="https://i.ibb.co.com/JFQ2yCqj/download.jpg"/>
                     <label className="fieldset-label">Campaign organised By</label>
-                    <input type="text" name='organizerName' className="input" placeholder={'Organizer name'} required />
+                    <input type="text" name='organizerName' className="input" placeholder={'Organizer name'} value={user.displayName} required />
                     <label className="fieldset-label">Campaign organizer Email</label>
                     <input type="text" name="organizerEmail" className="input" placeholder={user.email} value={user.email} />
-                    <button className="btn btn-neutral mt-4">Create Campaign</button>
+                    <button className="btn btn-neutral mt-4">Add Campaign</button>
                 </form>
             </div>
             

@@ -21,17 +21,18 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">
           <NavLink to="/" className={"btn btn-primary btn-outline m-[5px]"}>Home</NavLink>
           <NavLink to="/all-campaign" className={"btn btn-primary btn-outline m-[5px]"}>All Campaign</NavLink>
-          <li><NavLink to="/create-campaign" className={"btn btn-primary btn-outline m-[5px]"}>Create Campaign</NavLink></li>
+          <li><NavLink to="/create-campaign" className={"btn btn-primary btn-outline m-[5px]"}>Add Campaign</NavLink></li>
           {user && <li>
             <NavLink to="/my-advertise" className={"btn btn-primary btn-outline m-[5px]"}>
               My Campaign
             </NavLink>
           </li>}
-          <li>
-                  <NavLink to="/my-donation" className={"btn btn-primary btn-outline m-[5px]"}>
-                    My Donation
-                  </NavLink>
-                </li>
+          {user&&<li>
+            <NavLink to="/my-donation" className={"btn btn-primary btn-outline m-[5px]"}>
+              My Donation
+            </NavLink>
+          </li>}
+          
           <NavLink to="/howToHelpUs" className={"btn btn-primary btn-outline m-[5px]"}>How to help us?</NavLink>
         </ul>
       </div>
@@ -55,7 +56,7 @@ const Navbar = () => {
                 <li><NavLink className={"btn btn-primary btn-outline m-[5px]"}>Home</NavLink></li>
                 <li><NavLink to="/all-campaign" className={"btn btn-primary btn-outline m-[5px]"}>All Campaign</NavLink></li>
                 <li><NavLink to="/dashboard" className={"btn btn-primary btn-outline m-[5px]"}>Dashboard</NavLink></li>
-                <li><NavLink to="/create-campaign" className={"btn btn-primary btn-outline m-[5px]"}>Create Campaign</NavLink></li>
+                <li><NavLink to="/create-campaign" className={"btn btn-primary btn-outline m-[5px]"}>Add Campaign</NavLink></li>
                 <li>
                   <NavLink to="/my-advertise" className={"btn btn-primary btn-outline m-[5px]"}>
                     My Campaign
@@ -75,7 +76,7 @@ const Navbar = () => {
                 <ul className="bg-base-100 rounded-t-none p-2">
                   <li><NavLink className={"btn btn-primary btn-outline m-[5px]"}>Home</NavLink></li>
                   <li><NavLink to="/all-campaign" className={"btn btn-primary btn-outline m-[5px]"}>All Campaign</NavLink></li>
-                  <li><NavLink to="/create-campaign" className={"btn btn-primary btn-outline m-[5px]"}>Create Campaign</NavLink></li>
+                  <li><NavLink to="/create-campaign" className={"btn btn-primary btn-outline m-[5px]"}>Add Campaign</NavLink></li>
                   <li><NavLink to="/signup" className={"btn btn-primary btn-outline m-[5px]"}>Signup</NavLink></li>
                   <li><NavLink to="/login" className={"btn btn-primary btn-outline m-[5px]"}>Login</NavLink></li>
                   <li> <NavLink to="/howToHelpUs" className={"btn btn-primary btn-outline m-[5px]"}>How to help us?</NavLink></li>
