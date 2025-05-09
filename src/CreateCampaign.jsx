@@ -70,7 +70,7 @@ const CreateCampaign = () => {
                     <label className="fieldset-label">Campaign Description</label>
                     <input required name="description" type="text" className="input" placeholder="Campaign Description" />
                     <label className="fieldset-label">Minimum donation amount</label>
-                    <input required name="amount" type="number" className="input" placeholder="Minimum donation amount" />
+                    <input required name="amount" type="number" className="input" placeholder="Minimum donation amount in USD" />
                     <label className="fieldset-label">Deadline (Date)</label>
                     <input required name="deadline" type="datetime-local" className="datetime-local text-xl border-[1px] border-solid border-black p-[5px]" placeholder="Campaign Description" />
                     <label className="fieldset-label">Image URL</label>

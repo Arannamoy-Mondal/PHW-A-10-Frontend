@@ -58,7 +58,7 @@ const DonateNow = () => {
                 <label className="fieldset-label">Your Email</label>
                 <input type="email" className="input" placeholder="Email" name="email" value={user.email}/>
                 <label className="fieldset-label">Donation Amount:</label>
-                <input type="number" name="amount" required id="" className='input' placeholder={`Minimum ${campaign.amount} BDT`}/>
+                <input type="number" name="amount" required id="" className='input' placeholder={`Minimum $ ${campaign.amount}`}/>
                 {/* <input type="number" id="" className='input' placeholder={`Minimum ${campaign.totalDonatedAmount} BDT`}/> */}
                 <button className="btn btn-neutral mt-4">Donate</button>
             </form>
