@@ -18,7 +18,6 @@ const Dashboard = () => {
         }
         fetchData()
     }, [])
-    console.log(user);
     const totalDonation=()=>{
         let t=0;
         donations.map(el => {

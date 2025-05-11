@@ -41,8 +41,8 @@ const Banner = () => {
                                 </div>
                                 <h1 className="flex justify-center font-bold">{ }</h1>
                                 <h1 className="text-center font-bold">Minimum donation amount: ${campaign.amount}</h1>
-                                <h1 className="text-center font-bold">Organizer name: {campaign.organizerName}</h1>
-                                <h1 className="text-center font-bold">{campaign.deadline}</h1>
+                                {/* <h1 className="text-center font-bold">Organizer name: {campaign.organizerName}</h1>
+                                <h1 className="text-center font-bold">{campaign.deadline}</h1> */}
                                 <div className="flex flex-wrap justify-center gap-[10px]">
                                     <NavLink to={`/viewmore/` + campaign._id} className="btn btn-primary text-white">View More</NavLink>
                                     <NavLink to={"/donate/" + campaign._id} className="btn btn-warning text-black">Donate Now</NavLink>

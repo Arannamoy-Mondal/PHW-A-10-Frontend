@@ -75,7 +75,7 @@ const CreateCampaign = () => {
                     <label className="fieldset-label">Deadline (Date)</label>
                     <input required name="deadline" type="datetime-local" className="datetime-local text-xl border-[1px] border-solid border-black p-[5px]" placeholder="Campaign Description" />
                     <label className="fieldset-label">Image URL</label>
-                    <input required name="url" type="url" className="input" placeholder="Image URL" value="https://i.ibb.co.com/JFQ2yCqj/download.jpg"/>
+                    <input required name="url" type="url" className="input" placeholder="Image URL" />
                     <label className="fieldset-label">Campaign organised By</label>
                     <input type="text" name='organizerName' className="input" placeholder={'Organizer name'} value={user.displayName} required />
                     <label className="fieldset-label">Campaign organizer Email</label>
@@ -89,3 +89,7 @@ const CreateCampaign = () => {
 };
 
 export default CreateCampaign;
+
+
+
+// value="https://i.ibb.co.com/JFQ2yCqj/download.jpg"

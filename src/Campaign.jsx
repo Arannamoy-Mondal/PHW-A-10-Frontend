@@ -21,7 +21,7 @@ const Campaign = ({ campaign}) => {
             <h1 className='text-center text-wrap w-[100%] m-auto font-bold'>{description}</h1>
             <h1 className='text-center text-wrap font-bold'>Campaign Type: {type}</h1>
             <h1 className='text-center text-wrap font-bold underline text-xl'>Minimum Donation Amount: $ {amount}</h1>
-            <h1 className='text-center text-wrap'>Campaign Start Time:{created_time}</h1>
+            <h1 className='text-center text-wrap'>Campaign Donation Start Time:{created_time}</h1>
             <h1 className='text-center text-wrap'>Last Date For Donation: {deadline}</h1>
             {/* <h1 className='text-center text-wrap'>{organizerName}</h1> */}
             <h1 className='text-center text-wrap font-semibold w-[90%]'>Organizer Email: {organizerEmail}</h1>

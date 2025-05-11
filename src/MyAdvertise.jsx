@@ -26,7 +26,7 @@ const MyAdvertise = () => {
     const deleteCampaign = (id) => {
         swal({
             title: "Are you sure?",
-            text: "Are you sure that you want to leave this page?",
+            text: "Are you sure that you want to delete this?",
             icon: "warning",
             dangerMode: true,
         })

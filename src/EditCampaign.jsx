@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Authcontext } from './Authprovider';
-
+import swal from 'sweetalert';
 const EditCampaign = () => {
     const params = useParams()
     const { user } = useContext(Authcontext)
@@ -78,7 +78,7 @@ const EditCampaign = () => {
                     headers:{
                         "content-type":"application/json"
                     },
-                    body: JSON.stringify({"description":cDeadlineInfo})
+                    body: JSON.stringify({"deadline":cDeadlineInfo})
                 })
             )
             if(data)navigate(`/viewmore/${params.id}`)
@@ -107,7 +107,7 @@ const EditCampaign = () => {
             )
             if(data)navigate(`/viewmore/${params.id}`)
         }
-        
+        swal("Success","","success")
     }
 
     return (
