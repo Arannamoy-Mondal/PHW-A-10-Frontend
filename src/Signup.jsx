@@ -7,7 +7,7 @@ import Banner from './Banner';
 import AllCampaign from './AllCampaign';
 import Loading from './Loading';
 import Home from './Home';
-
+import swal from 'sweetalert';
 const Signup = () => {
     const [show, setShow] = useState(true)
     const { loading, user, setUser, googleAuthentication, createAccount,logOut,update_profile } = useContext(Authcontext)
@@ -51,7 +51,16 @@ const Signup = () => {
                     update_profile(name,photo_url)
                     logOut();
                     setOk("Account successfully created. now log in")
-                    Navigate("/login")
+                    swal("Successfully Registered","Now, Login please.","success")
+                    .then((res)=>{
+                       if(res){
+                            Navigate("/login")
+                        }
+                        else{
+                            Navigate("/")
+                        }
+                    })
+                    
                 })
                     .catch(err => setEr(err.message))
 
