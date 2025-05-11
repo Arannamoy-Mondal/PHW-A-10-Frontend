@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react';
 import auth from './firebase.config';
@@ -36,6 +36,17 @@ const Authprovider = ({ children }) => {
 
     }
 
+    const update_profile = (x,y) => {
+        updateProfile(auth.currentUser, {
+            displayName: x, photoURL: y
+        }).then(() => {
+            // Profile updated!
+            // ...
+        }).catch((error) => {
+            // An error occurred
+            // ...
+        });
+    }
 
     const googleProvider = new GoogleAuthProvider();
 
@@ -65,10 +76,10 @@ const Authprovider = ({ children }) => {
                                 },
                                 body: JSON.stringify({ name, email, totalDonation, created_time })
                             })
-                            .then(res => res.json())
+                                .then(res => res.json())
                         }
                     })
-                    
+
 
 
 
@@ -114,7 +125,8 @@ const Authprovider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password)
     }
 
-    const authInfo = { user, setUser, googleAuthentication, createAccount, logOut, loading, forgetPassword, login }
+    const authInfo = { user, setUser, googleAuthentication, 
+        createAccount, logOut, loading, forgetPassword, login ,update_profile}
     return (
         <Authcontext.Provider value={authInfo}>
             {children}

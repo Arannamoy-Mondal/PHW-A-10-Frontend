@@ -5,6 +5,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { Authcontext } from './Authprovider';
 import AllCampaign from './AllCampaign';
 import Loading from './Loading';
+import Root from './Root';
 
 const Login = () => {
   const emailRef = useRef();
@@ -66,7 +67,7 @@ const Login = () => {
     return <Loading></Loading>
   }
   if (user) {
-    return <Home></Home>
+    return  <AllCampaign></AllCampaign>
   }
   return (
     <div className='my-[15px]'>

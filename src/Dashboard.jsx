@@ -18,7 +18,7 @@ const Dashboard = () => {
         }
         fetchData()
     }, [])
-
+    console.log(user);
     const totalDonation=()=>{
         let t=0;
         donations.map(el => {
@@ -35,7 +35,7 @@ const Dashboard = () => {
     return (
         <div className='w-[70%] mx-auto py-[250px]'>
             <div className=' w-[100%]'>
-                <img src={user.photoURL ? user.photoURL : "./No.png"} alt="" className='w-[150px] h-[150px] mx-auto' />
+                <img src={user.photoURL ? user.photoURL : "No.png"} alt="" className='w-[150px] h-[150px] mx-auto' />
             </div>
             <h1 className='text-center text-[1rem] text-wrap font-black'>Username: {user.displayName}</h1>
             <h1 className='text-center text-[1rem] text-wrap font-black'>Email: {user.email}</h1>

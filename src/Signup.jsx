@@ -10,7 +10,7 @@ import Home from './Home';
 
 const Signup = () => {
     const [show, setShow] = useState(true)
-    const { loading, user, setUser, googleAuthentication, createAccount } = useContext(Authcontext)
+    const { loading, user, setUser, googleAuthentication, createAccount,logOut,update_profile } = useContext(Authcontext)
     const [ok, setOk] = useState(null)
     const [er, setEr] = useState(null)
 
@@ -41,13 +41,17 @@ const Signup = () => {
         const email = e.target.email.value
         const password = e.target.password.value
         const cpassword = e.target.cpassword.value
+        const name=e.target.name.value
+        const photo_url=e.target.photo_url.value
         const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8}$/;
         if (password === cpassword) {
             if (regex.test(password)) {
                 createAccount(email, password).then(res => {
                     setUser(res.user)
+                    update_profile(name,photo_url)
+                    logOut();
                     setOk("Account successfully created. now log in")
-                    Navigate("/")
+                    Navigate("/login")
                 })
                     .catch(err => setEr(err.message))
 
@@ -76,9 +80,12 @@ const Signup = () => {
             <hr className='border-[1px] border-solid my-[10px]'/>
             <div className='flex justify-center mt-[25px]'>
                 <form class="fieldset w-xs bg-base-200 border border-base-300 p-4 rounded-box" onSubmit={signUp}>
+                    <label class="fieldset-label text-[1.25rem] text-black font-bold">Name</label>
+                    <input type="text" class="input" placeholder="Name" name="name" required />
                     <label class="fieldset-label text-[1.25rem] text-black font-bold">Email</label>
                     <input type="email" class="input" placeholder="Email" name="email" required />
-
+                    <label class="fieldset-label text-[1.25rem] text-black font-bold">Photo URL</label>
+                    <input type="url" class="input" placeholder="Photo URL" name="photo_url" required />
                     <label class="fieldset-label text-[1.25rem] text-black font-bold">Password</label>
                     <input type={show ? "password" : "text"} class="input" placeholder="Password" name="password" required />
                     <label class="fieldset-label text-[1.25rem] text-black font-bold">Confirm Password</label>
